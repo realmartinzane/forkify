@@ -1,15 +1,18 @@
 {
     "presets":
     [
-        ["env", {
-            "targets":
+        [
+            "@babel/preset-env", 
             {
-                "browsers": 
-                [
-                    "last 5 versions",
-                    "ie >= 8"
-                ]
+                "targets":
+                {
+                    "browsers": 
+                    [
+                        "last 5 versions",
+                        "ie >= 8"
+                    ]
+                }
             }
-        }]
+        ]
     ]
 }
