@@ -1,19 +1,35 @@
-// 2c18e19bc34d81949e3ff6aa7e3f39e3
-// https://www.food2fork.com/api/search
+import Search from './models/Search'
+import * as searchView from './views/search'
+import { elements } from './views/base'
 
-import axios from 'axios'
+/* Global State
+ * - Search Object
+ * - Current Recipe Object
+ * - Shopping List Object
+ * - Liked Recipes
+ */
+const state = {}
 
-async function getResults(query)
+const controlSearch = async () =>
 {
-    const key = '2c18e19bc34d81949e3ff6aa7e3f39e3'
-    try 
+    const query = searchView.getInput();
+    console.log(query)
+
+    if(query)
     {
-        const res = await axios(`https://www.food2fork.com/api/search?key=${key}&q=${query}`)
-        console.log(res.data.recipes)
-    }
-    catch (error)
-    {
-        alert(error)
+        state.search = new Search(query)
+
+        searchView.clearResults();
+        searchView.clearInput();
+
+        await state.search.getResults()
+
+        searchView.renderResults(state.search.result)
     }
 }
-getResults('pizza')
+
+elements.searchForm.addEventListener('submit', e => 
+{
+    e.preventDefault();
+    controlSearch();
+});
