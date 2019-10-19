@@ -68,7 +68,7 @@ const createButton = (page, type) =>
 const renderButtons = (page, numResults, resultsPerPage) => 
 {
     const pages = Math.ceil(numResults / resultsPerPage)
-    let button;
+    let button
 
     if(page === 1 && pages > 1)
         button = createButton(page, 'next')
