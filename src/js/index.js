@@ -17,7 +17,7 @@ const state = {}
 
 const controlSearch = async () =>
 {
-    const query = searchView.getInput();
+    const query = searchView.getInput()
 
     if(query)
     {
@@ -76,6 +76,7 @@ const controlRecipe = async () =>
         try 
         {
             await state.recipe.getRecipe()
+            state.recipe.parseIngredients()
 
             state.recipe.calcTime()
             state.recipe.calcServings()
@@ -84,7 +85,7 @@ const controlRecipe = async () =>
         }
         catch (error)
         {
-            alert('Error: Couldn\'t process recipe!')
+            alert('Error: Couldn\'t process recipe!' + error)
         }
     }
 }
