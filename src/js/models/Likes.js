@@ -5,9 +5,9 @@ export default class Likes
         this.likes = []
     }
 
-    addLike(id, title, publisher, img)
+    addLike(id, title, publisher, image)
     {
-        const like = {id, title, publisher, img}
+        const like = {id, title, publisher, image}
         this.likes.push(like)
         return like
     }
