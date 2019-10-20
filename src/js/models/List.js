@@ -18,6 +18,7 @@ export default class List
         }
 
         this.items.push(item)
+        return item
     }
 
     deleteItem(id)
